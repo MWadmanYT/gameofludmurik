@@ -11,7 +11,7 @@ screen_width = 1920
 screen_height = 1080
 
 win = pygame.display.set_mode([screen_width, screen_height],pygame.FULLSCREEN)
-pygame.display.set_caption("Game about Ludmurik")
+pygame.display.set_caption("Червячок")
 clock = pygame.time.Clock()
 
 run = True
