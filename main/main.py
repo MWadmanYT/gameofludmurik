@@ -30,7 +30,6 @@ class player(object):
             if self.lastposition == 2:
                 win.blit(image.idleRight, (self.x, self.y))
 
-
 def drawWindow(win, ownplayer):
     win.blit(image.background, (0, 0))
     ownplayer.draw(win)
