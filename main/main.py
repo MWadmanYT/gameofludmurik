@@ -1,6 +1,11 @@
 import pygame
 from main.image_init import image
 
+class screen():
+    screen_width = 1920
+    screen_height = 1080
+    win = pygame.display.set_mode([screen_width, screen_height],pygame.FULLSCREEN)
+
 class player(object):
     def __init__(self, x, y, width, height):
         self.x = x
@@ -31,18 +36,22 @@ class player(object):
             if self.lastposition == 2:
                 win.blit(image.idleRight, (self.x, self.y))
 
-def drawWindow(win, ownplayer):
-    win.blit(image.background, (0, 0))
-    ownplayer.draw(win)
+player = player(0, 0, 196, 118)
+
+
+def drawWindow():
+    screen.win.blit(image.background, (0, 0))
+    player.draw(screen.win)
     pygame.display.update()
 
 def playerGoing():
+    keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and player.x >= 0:
         player.x -= player.speed
         player.left = True
         player.right = False
         player.lastposition = 1
-    if keys[pygame.K_RIGHT] and player.x <= screen_width - player.width:
+    if keys[pygame.K_RIGHT] and player.x <= screen.screen_width - player.width:
         player.x += player.speed
         player.left = False
         player.right = True
@@ -50,20 +59,7 @@ def playerGoing():
     else:
         player.left = False
         player.right = False
-
     if keys[pygame.K_UP] and y >= 0:
         y -= speed
-    if keys[pygame.K_DOWN] and y <= screen_height - height:
+    if keys[pygame.K_DOWN] and y <= screen.screen_height - player.height:
         y += speed
-    if keys[pygame.K_SPACE]:
-            player.isJump = True
-    else:
-        if player.jumpCount >= -10:
-            if player.jumpCount < 0:
-                player.y += (player.jumpCount ** 2) / 4
-            else:
-                player.y -= (player.jumpCount ** 2) / 4
-            player.jumpCount -= 1
-        else:
-            player.isJump = False
-            player.jumpCount = 10

@@ -1,13 +1,10 @@
 import pygame
-from main.main import player, drawWindow
 from main.image_init import image
+from levels.scene1 import start
+from main.main import screen
 
 pygame.init()
 
-screen_width = 1920
-screen_height = 1080
-
-win = pygame.display.set_mode([screen_width, screen_height],pygame.FULLSCREEN)
 pygame.display.set_caption("Cherviak")
 clock = pygame.time.Clock()
 
@@ -24,19 +21,14 @@ while run:
     if keys[pygame.K_ESCAPE]:
         run = False
 
-    color3 = 255
-    color1 = 255
-    color2 = 255
+    if pygame.mouse.get_pos()[0] >= 57 and pygame.mouse.get_pos()[1] >= 540 and pygame.mouse.get_pos()[0] <= 243 and pygame.mouse.get_pos()[1] <= 616:
+        screen.win.blit(image.play2, (57, 540))
+    else:
+        screen.win.blit(image.play1, (57, 540))
+    if pygame.mouse.get_pressed() and pygame.mouse.get_pos()[0] >= 57 and pygame.mouse.get_pos()[1] >= 540 and pygame.mouse.get_pos()[0] <= 243 and pygame.mouse.get_pos()[1] <= 616:
+        start()
 
-    if pygame.mouse.get_pos()[0] >= 40 and pygame.mouse.get_pos()[1] >= 540 and pygame.mouse.get_pos()[0] <= 260 and pygame.mouse.get_pos()[1] <= 580:
-        color3 = 135
-    if pygame.mouse.get_pressed()[0]:
-        color3 = 50
-        color1 = 10
-        color2 = 200
-
-    pygame.draw.rect(win, (color1, color2, color3), (40, 540, 220, 40))
-    win.blit(image.backgroundmenu, (300, 0))
+    screen.win.blit(image.backgroundmenu, (300, 0))
     pygame.display.update()
 
 pygame.quit()

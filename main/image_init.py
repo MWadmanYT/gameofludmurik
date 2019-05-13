@@ -7,3 +7,5 @@ class image():
     idleRight = pygame.image.load('images/sprite_right_stand.png')
     background = pygame.image.load('images/background.png')
     backgroundmenu = pygame.image.load('backgroundmenu.png')
+    play1 = pygame.image.load('images/play1.png')
+    play2 = pygame.image.load('images/play2.png')
