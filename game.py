@@ -23,38 +23,6 @@ while run:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
         run = false
-#    if keys[pygame.K_LEFT] and player.x >= 0:
-#        player.x -= player.speed
-#        player.left = True
-#        player.right = False
-#        player.lastposition = 1
-#    elif keys[pygame.K_RIGHT] and player.x <= screen_width - player.width:
-#        player.x += player.speed
-#        player.left = False
-#        player.right = True
-#        player.lastposition = 2
-#    else:
-#        player.left = False
-#        player.right = False
-#
-#    if not(player.isJump):
-        #if keys[pygame.K_UP] and y >= 0:
-        #    y -= speed
-        #if keys[pygame.K_DOWN] and y <= screen_height - height:
-        #    y += speed
-#        if keys[pygame.K_SPACE]:
-#            player.isJump = True
-#    else:
-#        if player.jumpCount >= -10:
-#            if player.jumpCount < 0:
-#                player.y += (player.jumpCount ** 2) / 4
-#            else:
-#                player.y -= (player.jumpCount ** 2) / 4
-#            player.jumpCount -= 1
-#        else:
-#            player.isJump = False
-#            player.jumpCount = 10
-#    drawWindow(win, player)
 
     color3 = 255
     color1 = 255

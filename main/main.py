@@ -8,12 +8,13 @@ class player(object):
         self.width = width
         self.height = height
         self.speed = 10
-        self.isJump = False
         self.jumpCount = 10
         self.left = False
         self.right = False
         self.lastposition = 1
         self.animCount = 0
+        self.up = False
+        self.down = True
 
     def draw(self, win):
         if self.animCount + 1 >= 30:
@@ -34,3 +35,35 @@ def drawWindow(win, ownplayer):
     win.blit(image.background, (0, 0))
     ownplayer.draw(win)
     pygame.display.update()
+
+def playerGoing():
+    if keys[pygame.K_LEFT] and player.x >= 0:
+        player.x -= player.speed
+        player.left = True
+        player.right = False
+        player.lastposition = 1
+    if keys[pygame.K_RIGHT] and player.x <= screen_width - player.width:
+        player.x += player.speed
+        player.left = False
+        player.right = True
+        player.lastposition = 2
+    else:
+        player.left = False
+        player.right = False
+
+    if keys[pygame.K_UP] and y >= 0:
+        y -= speed
+    if keys[pygame.K_DOWN] and y <= screen_height - height:
+        y += speed
+    if keys[pygame.K_SPACE]:
+            player.isJump = True
+    else:
+        if player.jumpCount >= -10:
+            if player.jumpCount < 0:
+                player.y += (player.jumpCount ** 2) / 4
+            else:
+                player.y -= (player.jumpCount ** 2) / 4
+            player.jumpCount -= 1
+        else:
+            player.isJump = False
+            player.jumpCount = 10
