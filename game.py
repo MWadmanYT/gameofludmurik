@@ -22,7 +22,7 @@ while run:
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
-        run = false
+        run = False
 
     color3 = 255
     color1 = 255
